@@ -46,3 +46,9 @@ Some resources to get started:
 
 *   [Support Request](https://docs.google.com/forms/d/e/1FAIpQLSekGsS88VkVGCOdW58-MLXKEMpZ8m3PTjGt28sdiWZpEqDXPg/viewform)
 *   [Discord](https://discord.gg/rAnZPdW)
+
+* * *
+### Buy One
+[Mod-EC](https://ufire.co) - just the sensor
+
+[Isolated Qwiic Dev Board](https://ufire.co) - all the components needed to use the module
