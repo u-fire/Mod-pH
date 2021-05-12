@@ -49,6 +49,6 @@ Some resources to get started:
 
 * * *
 ### Buy One
-[Mod-EC](https://ufire.co) - just the sensor
+[Mod-pH](https://ufire.co) - just the sensor
 
 [Isolated Qwiic Dev Board](https://ufire.co) - all the components needed to use the module
