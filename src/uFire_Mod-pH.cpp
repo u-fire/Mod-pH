@@ -86,8 +86,8 @@ namespace uFire
     // Returns true or false if the sensor is connected.
     bool i2c::connected()
     {
-      Wire.beginTransmission(_address);
-      uint8_t retval = Wire.endTransmission();
+      _i2cPort->beginTransmission(_address);
+      uint8_t retval = _i2cPort->endTransmission();
 
       if (retval)
       {
