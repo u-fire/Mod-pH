@@ -1,5 +1,5 @@
 {
-  "name": "Mod-pH",
+  "name": "Microfire_Mod-pH",
   "keywords": "ph, hydroponics",
   "description": "Add the ability to measure pH to your hardware application with a fully digital interface.",
   "repository": {
@@ -14,7 +14,7 @@
       "maintainer": true
     }
   ],
-  "version": "0.9.0",
+  "version": "1.0.0",
   "frameworks": "arduino",
   "platforms": "*"
 }
