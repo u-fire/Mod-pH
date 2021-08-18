@@ -1,7 +1,7 @@
 Mod-pH
 ======
 
-> [Datasheet](https://ufire.dev/files/mod-ph_datasheet.pdf) 📜
+> [Datasheet](https://docs.google.com/document/d/1DSG9bdEHDt9mdQInVfCWy4qiohi6sVeEy7QbvBfUmU0/export?format=pdf) 📜
 
 Add the ability to measure pH to your hardware application with a fully digital interface.
 
@@ -20,8 +20,8 @@ Add the ability to measure pH to your hardware application with a fully digital 
 
 ### Use
 
-*   [I²C Arduino Library Documentation](https://ufire.dev/files/mod-ph_arduino_library.pdf)
-*   [I²C Raspberry Pi Python Documentation](https://ufire.dev/files/mod-ph_raspberrypi_library.pdf)
+*   [I²C Arduino Library Documentation](https://docs.google.com/document/d/1HLghIkSMYmkdaHi_q2rsNNZ8Qt1XwOR0MgVI2-G0QFU/export?format=pdf)
+*   [I²C Raspberry Pi Python Documentation](https://docs.google.com/document/d/1QLtLipMHrk-SteQGjmvDxXrUV_FEvt7dCqPpgSY6kqM/export?format=pdf)
 
 * * *
 
@@ -35,8 +35,8 @@ Adding a module to your own design is straightforward. You'll need:
 
 Some resources to get started:
 
-*   [Schematic of the Isolated Dev Board](https://ufire.dev/files/isolated_qwiic_dev_board_schematic.pdf)
-*   Design Incorporation section of the [Datasheet](https://ufire.dev/files/mod-ph_datasheet.pdf)
+*   [Schematic of the Isolated Dev Board](https://ufire.co/files/isolated_qwiic_dev_board_schematic.pdf)
+*   Design Incorporation section of the [Datasheet](https://docs.google.com/document/d/1DSG9bdEHDt9mdQInVfCWy4qiohi6sVeEy7QbvBfUmU0/export?format=pdf)
 
 > [Request a custom board](https://docs.google.com/forms/d/e/1FAIpQLSfiCyjnq35GVyaRjVw6HphhNFNmoyi723qlqVLjUhc-TrmvfQ/viewform)
 
