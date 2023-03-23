@@ -8,11 +8,10 @@ Add the ability to measure pH to your hardware application with a fully digital 
 #### Summary ℹ️
 
 *   pH range of 0.001 to 14.000 pH units
-*   Accuracy ±0.002 pH units
+*   Accuracy ±0.005 pH units
 *   Resolution 0.001 pH units
 *   Temperature compensated
-*   I²C, UART, and USB interfaces
-*   1-Wire interface for DS18B20 temperature sensor
+*   I²C interface
 *   25x15 mm for castellated or DIP mounting
 *   Single, dual, and triple point calibration
 
