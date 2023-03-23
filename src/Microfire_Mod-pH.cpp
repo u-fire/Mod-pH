@@ -1,22 +1,22 @@
-#include "uFire_Mod-pH.h"
+#include "Microfire_Mod-pH.h"
 
-float uFire::Mod_pH::i2c::_pH = -1;
-float uFire::Mod_pH::i2c::_tempC = -1;
-float uFire::Mod_pH::i2c::_tempF = -1;
-float uFire::Mod_pH::i2c::_mV = -1;
-float uFire::Mod_pH::i2c::_calibrationLowReading = -1;
-float uFire::Mod_pH::i2c::_calibrationLowReference = -1;
-float uFire::Mod_pH::i2c::_calibrationMidReading = -1;
-float uFire::Mod_pH::i2c::_calibrationMidReference = -1;
-float uFire::Mod_pH::i2c::_calibrationHighReading = -1;
-float uFire::Mod_pH::i2c::_calibrationHighReference = -1;
-float uFire::Mod_pH::i2c::_calibrationSingleOffset = -1;
-float uFire::Mod_pH::i2c::_calibrationTemperature = -1;
-int uFire::Mod_pH::i2c::_hwVersion = -1;
-int uFire::Mod_pH::i2c::_fwVersion = -1;
-int uFire::Mod_pH::i2c::_status = -1;
+float Microfire::Mod_pH::i2c::_pH = -1;
+float Microfire::Mod_pH::i2c::_tempC = -1;
+float Microfire::Mod_pH::i2c::_tempF = -1;
+float Microfire::Mod_pH::i2c::_mV = -1;
+float Microfire::Mod_pH::i2c::_calibrationLowReading = -1;
+float Microfire::Mod_pH::i2c::_calibrationLowReference = -1;
+float Microfire::Mod_pH::i2c::_calibrationMidReading = -1;
+float Microfire::Mod_pH::i2c::_calibrationMidReference = -1;
+float Microfire::Mod_pH::i2c::_calibrationHighReading = -1;
+float Microfire::Mod_pH::i2c::_calibrationHighReference = -1;
+float Microfire::Mod_pH::i2c::_calibrationSingleOffset = -1;
+float Microfire::Mod_pH::i2c::_calibrationTemperature = -1;
+int Microfire::Mod_pH::i2c::_hwVersion = -1;
+int Microfire::Mod_pH::i2c::_fwVersion = -1;
+int Microfire::Mod_pH::i2c::_status = -1;
 
-namespace uFire
+namespace Microfire
 {
   namespace Mod_pH
   {

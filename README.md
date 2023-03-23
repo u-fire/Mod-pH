@@ -29,26 +29,18 @@ Add the ability to measure pH to your hardware application with a fully digital 
 
 Adding a module to your own design is straightforward. You'll need:
 
-1.  bus connection to your controlling device (I2C, UART, USB)
+1.  bus connection to your controlling device
 2.  clean, preferably isolated, power supply
 3.  probe connection (U.FL, BNC, terminal block)
 
-Some resources to get started:
-
-*   [Schematic of the Isolated Dev Board](https://ufire.co/files/isolated_qwiic_dev_board_schematic.pdf)
-*   Design Incorporation section of the [Datasheet](https://docs.google.com/document/d/1DSG9bdEHDt9mdQInVfCWy4qiohi6sVeEy7QbvBfUmU0/export?format=pdf)
-
-> [Request a custom board](https://docs.google.com/forms/d/e/1FAIpQLSfiCyjnq35GVyaRjVw6HphhNFNmoyi723qlqVLjUhc-TrmvfQ/viewform)
-
 * * *
 
-#### Ask a question 🤙
+### Ask a question 🤙
 
-*   [Support Request](https://docs.google.com/forms/d/e/1FAIpQLSekGsS88VkVGCOdW58-MLXKEMpZ8m3PTjGt28sdiWZpEqDXPg/viewform)
 *   [Discord](https://discord.gg/rAnZPdW)
+*   [questions@microfire.co](mailto:questions@microfire.co)
 
 * * *
-### Buy One
-[Mod-pH](https://ufire.co/buy/) - just the sensor
 
-[Isolated Dev Board](https://ufire.co) - all the components needed to use the module
+### Website
+[microfire.co](https://microfire.co)

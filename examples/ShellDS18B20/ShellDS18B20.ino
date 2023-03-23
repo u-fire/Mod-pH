@@ -4,7 +4,7 @@
    questions@microfire.co to get in touch with someone
 
    Mod-pH hardware version 2, firmware 1
-   
+
    This allows you to run various functions in a command-line like interface.
    Enter:
    `config` to see the configuration of the device.
@@ -13,43 +13,53 @@
    Measure pH:
      ph <solution temp [25]>
       `ph` - pH measurement with default parameters
+      `ph t` - pH measurement using result of measureTemp() for solution temperature
 
    Single Point Calibration:
     sin <calibration solution in pH> <solution temp [25]>
-      `sin 4.0` - Calibrate at 4.0 pH
+      `sin 4.0 t` - Calibrate at 4.0 pH using measureTemp() for solution temp
 
    Dual Point Calibration:
     low <calibration solution in pH> <solution temp [25]>
-      `low 4.0` - Calibrate at 4.0 pH
+      `low 4.0 t` - Calibrate at 4.0 pH using measureTemp() for solution temp
 
     high <calibration solution in pH> <solution temp [25]>
-      `high 10.0` - Calibrate at 10.0 pH
+      `high 10.0 t` - Calibrate at 10.0 pH using measureTemp() for solution temp
 
    Triple Point Calibration:
     low <calibration solution in pH> <solution temp [25]>
-      `low 4.0` - Calibrate at 4.0 pH
+      `low 4.0 t` - Calibrate at 4.0 pH using measureTemp() for solution temp
     mid <calibration solution in pH> <solution temp [25]>
-      `mid 7.0` - Calibrate at 7.0 pH
+      `mid 7.0 t` - Calibrate at 7.0 pH using measureTemp() for solution temp
     high <calibration solution in pH> <solution temp [25]>
-      `high 10.0` - Calibrate at 10.0 pH
+      `high 10.0 t` - Calibrate at 10.0 pH using measureTemp() for solution temp
+
+   Measure Temperature:
+    temp
 
    Change the I2C address:
     i2c 0x0F
 */
-
 #include "Microfire_Mod-pH.h"
+#include <OneWire.h>              // Click here to install the library: http://librarymanager/All#OneWire
+#include <DallasTemperature.h>    // Click here to install the library: http://librarymanager/All#DallasTemperature
 
+// what pin is the temperature sensor's signal pin connected to?
+#define ONE_WIRE_BUS 2
+
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature temp(&oneWire);
 Microfire::Mod_pH::i2c ph;
 
 String buffer, cmd, p1, p2;
-float temp_c;
+float temp_c, temp_f;
 const int fw_compatible = 1;
-const int hw_compatible = 2;
+const int hw_compatible = 1;
 
 void config()
 {
   ph.getDeviceInfo();
-  Serial.println((String) "Microfire Mod-pH Sensor: " + (ph.connected() ? "connected" : "*disconnected*"));
+  Serial.println((String) "uFire Mod-pH Sensor: " + (ph.connected() ? "connected" : "*disconnected*"));
   if (!ph.connected()) return;
   if ((ph.fwVersion != fw_compatible) || (ph.hwVersion != hw_compatible))
   {
@@ -84,6 +94,18 @@ void config_reset()
   config();
 }
 
+void temperature()
+{
+  temp.requestTemperatures();
+  temp_c = temp.getTempCByIndex(0);
+  temp_f = ((temp_c * 9) / 5) + 32;
+
+  Serial.print("C|F: ");
+  Serial.print(temp_c);
+  Serial.print(" | ");
+  Serial.println(temp_f);
+}
+
 void i2c()
 {
   uint8_t i2c_address;
@@ -113,6 +135,11 @@ void measure_ph()
   if (p1.length() ? temp_c = p1.toFloat() : temp_c = 25.0);
   while (Serial.available() == 0)
   {
+    if (p1 == "t")
+    {
+      temp.requestTemperatures();
+      temp_c = temp.getTempCByIndex(0);
+    }
     ph.measurepH(temp_c, true);
 
     switch (ph.status)
@@ -127,7 +154,8 @@ void measure_ph()
         Serial.println("Error: Measurement outside upper range");
         break;
       case ph.STATUS_NO_ERROR:
-          Serial.println((String) ph.pH + " pH");
+          Serial.print(ph.pH);
+          Serial.println((String)" pH @ " + temp_c + "°C");
         break;
     }
     delay(1000);
@@ -138,6 +166,11 @@ void low()
 {
   if (p2.length() ? temp_c = p2.toFloat() : temp_c = 25.0);
 
+  if (p2 == "t")
+  {
+    temp.requestTemperatures();
+      temp_c = temp.getTempCByIndex(0);
+  }
   ph.calibrateLow(p1.toFloat(), temp_c, true);
   switch (ph.status)
   {
@@ -160,6 +193,11 @@ void high()
 {
   if (p2.length() ? temp_c = p2.toFloat() : temp_c = 25.0);
 
+  if (p2 == "t")
+  {
+    temp.requestTemperatures();
+      temp_c = temp.getTempCByIndex(0);
+  }
   ph.calibrateHigh(p1.toFloat(), temp_c, true);
   switch (ph.status)
   {
@@ -184,7 +222,8 @@ void mid()
 
   if (p2 == "t")
   {
-    temp_c = ph.measureTemp();
+    temp.requestTemperatures();
+      temp_c = temp.getTempCByIndex(0);
   }
   ph.calibrateMid(p1.toFloat(), temp_c, true);
   switch (ph.status)
@@ -210,7 +249,8 @@ void single()
 
   if (p2 == "t")
   {
-    temp_c = ph.measureTemp();
+    temp.requestTemperatures();
+      temp_c = temp.getTempCByIndex(0);
   }
   ph.calibrateSingle(p1.toFloat(), temp_c, true);
   switch (ph.status)
@@ -241,12 +281,14 @@ void help()
   Serial.println(F("mid           : calibration_pH, temp_C[25.0] : Mid-point calibration."));
   Serial.println(F("reset -or- r  : no parameters : Returns all configuration information to default values."));
   Serial.println(F("sin           : calibration_pH, temp_C[25.0] : Single-point calibration."));
+  Serial.println(F("temp -or- t   : no parameters : Starts a temperature measurement"));
 }
 
 void cmd_run()
 {
   if ((cmd == "config") || (cmd == "c")) config();
   if ((cmd == "reset") || (cmd == "r")) config_reset();
+  if ((cmd == "temp") || (cmd == "t")) temperature();
   if (cmd == "mid") mid();
   if (cmd == "low") low();
   if (cmd == "high") high();
@@ -298,6 +340,7 @@ void setup()
 {
   Wire.begin();
   ph.begin();
+  temp.begin();
   Serial.begin(9600);
   Serial.println("Type `help` for a list of commands");
   config();

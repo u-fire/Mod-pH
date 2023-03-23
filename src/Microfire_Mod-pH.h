@@ -33,7 +33,7 @@
 #define CALIBRATE_SINGLE_OFFSET_REGISTER 40 /*!< single point offset register */
 #define CALIBRATE_TEMPERATURE_REGISTER 44   /*!< calibration temperature register */
 
-namespace uFire
+namespace Microfire
 {
   namespace Mod_pH
   {
