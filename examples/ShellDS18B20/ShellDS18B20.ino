@@ -54,7 +54,7 @@ Microfire::Mod_pH::i2c ph;
 String buffer, cmd, p1, p2;
 float temp_c, temp_f;
 const int fw_compatible = 1;
-const int hw_compatible = 1;
+const int hw_compatible = 2;
 
 void config()
 {
